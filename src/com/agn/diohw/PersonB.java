@@ -24,13 +24,6 @@ public class PersonB {
                 '}';
     }
 
-        public PersonB(String firstName, String lastName, int age, EnumRank rank) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.age = age;
-            this.rank = rank;
-        }
-
         public String getFirstName() {
             return firstName;
         }

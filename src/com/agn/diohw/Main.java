@@ -1,5 +1,7 @@
 package com.agn.diohw;
 
+import static com.agn.diohw.EnumRank.*;
+
 public class Main {
 
     public static void main(String[] arg0) {
@@ -20,11 +22,11 @@ Cгенерируйте equals/hashcode методы
         */
 
         // Init unique persons
-        Person personIvan = new Person("Ivan", "Ivanov", 23, EnumRank.TESTER);
-        Person personPetro = new Person("Petro", "Petrov", 27, EnumRank.SELLER);
+        Person personIvan = new Person("Ivan", "Ivanov", 23, TESTER);
+        Person personPetro = new Person("Petro", "Petrov", 27, SELLER);
         // Init identical persons
-        Person clone_1 = new Person("aa", "bb", 28, EnumRank.DEVELOPER);
-        Person clone_2 = new Person("aa", "bb", 28, EnumRank.DEVELOPER);
+        Person clone_1 = new Person("aa", "bb", 28, DEVELOPER);
+        Person clone_2 = new Person("aa", "bb", 28, DEVELOPER);
         //compare persons with ==, .equals, and hashCode
         comparePersons(personIvan, personPetro);
         comparePersons(clone_1, clone_2);
@@ -69,14 +71,14 @@ Cгенерируйте equals/hashcode методы
 Создайте Main класс, в main методе которого проведите распечатку в консоль и сравнение двух масивов
         */
         // Init unique persons
-        Person p1 = new Person("Ivan", "Ivanov", 23, EnumRank.TESTER);
-        Person p2 = new Person("Petro", "Petrov", 27, EnumRank.SELLER);
-        Person p3 = new Person("Igor", "Komarov", 28, EnumRank.DEVELOPER);
-        Person p4 = new Person("Victor", "Lomov", 29, EnumRank.DEVELOPER);
-        Person p5 = new Person("Eugene", "Koval", 23, EnumRank.TESTER);
-        Person p6 = new Person("Sidor", "Kozlov", 33, EnumRank.MANAGER);
-        Person p7 = new Person("Anna", "Zaharova", 19, EnumRank.DIRECTOR);
-        Person p8 = new Person("Olga", "Sidorchuk", 52, EnumRank.CLEANER);
+        Person p1 = new Person("Ivan", "Ivanov", 23, TESTER);
+        Person p2 = new Person("Petro", "Petrov", 27, SELLER);
+        Person p3 = new Person("Igor", "Komarov", 28, DEVELOPER);
+        Person p4 = new Person("Victor", "Lomov", 29, DEVELOPER);
+        Person p5 = new Person("Eugene", "Koval", 23, TESTER);
+        Person p6 = new Person("Sidor", "Kozlov", 33, MANAGER);
+        Person p7 = new Person("Anna", "Zaharova", 19, DIRECTOR);
+        Person p8 = new Person("Olga", "Sidorchuk", 52, CLEANER);
 
         Person[] arrFirstOffice = new Person[] {p1,p2,p3,p4,p8};
         Person[] arrSecondOffice = new Person[] {p2,p5,p6,p7,p8};
@@ -91,13 +93,13 @@ Cгенерируйте equals/hashcode методы
             }
         }
     }
-    
+
     private static void patternBuilder(){
         PersonB person = new PersonB.Builder()
                 .firstName("firstAAA")
                 .lastName("lastBBB")
                 .age(55)
-                .rank(EnumRank.DEVELOPER)
+                .rank(DEVELOPER)
                 .build();
 
         PersonB personCopy = new PersonB.Builder(person)
@@ -106,8 +108,19 @@ Cгенерируйте equals/hashcode методы
 
         comparePersons(person, personCopy);
         // Init unique persons
-        PersonB personIvan = new PersonB("Ivan", "Ivanov", 23, EnumRank.TESTER);
-        PersonB personPetro = new PersonB("Petro", "Petrov", 27, EnumRank.SELLER);
+        PersonB personIvan = new PersonB.Builder()
+                .firstName("Ivan")
+                .lastName("Ivanov")
+                .age(23)
+                .rank(TESTER)
+                .build();
+
+        PersonB personPetro = new PersonB.Builder()
+                .firstName( "Petro")
+                .lastName("Petrov")
+                .age(27)
+                .rank(SELLER)
+                .build();
 
         PersonB[] arrPers1 = new PersonB[]{personIvan, personPetro};
         PersonB[] arrPers2 = new PersonB[]{person, personCopy};
