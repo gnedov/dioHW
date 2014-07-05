@@ -8,7 +8,7 @@ public class Main {
     //    pojoPerson();  // HomeWork. Part1.
      //   arrayPersons(); //  HomeWork. Part2.
 
-        patternBuilder();   // ClassWork. Implements Builder pattern.
+        patternBuilder();   // ClassWork. Implements Builder, Delegate patterns.
 
     }
 
@@ -127,7 +127,8 @@ Cгенерируйте equals/hashcode методы
         PersonB[] arrMerge;
 
         PersonOperation perOp = new PersonOperation();
-        arrMerge = perOp.mergePersons(arrPers1, arrPers2);
-        perOp.printArray(arrMerge);
+        PersonOperationDelegate operDelegate = new PersonOperationDelegate(perOp);
+        arrMerge = operDelegate.mergePersons(arrPers1, arrPers2);
+        operDelegate.printArray(arrMerge);
     }
 }
