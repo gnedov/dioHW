@@ -111,10 +111,10 @@ Cгенерируйте equals/hashcode методы
 
         PersonB[] arrPers1 = new PersonB[]{personIvan, personPetro};
         PersonB[] arrPers2 = new PersonB[]{person, personCopy};
-      //  PersonB[] arrMerge;
+        PersonB[] arrMerge;
 
-      //  PersonOperation perOp = new PersonOperation();
-      //  arrMerge = perOp.mergePersons(arrPers1, arrPers2);
-      //  perOp.printArray(arrMerge);
+        PersonOperation perOp = new PersonOperation();
+        arrMerge = perOp.mergePersons(arrPers1, arrPers2);
+        perOp.printArray(arrMerge);
     }
 }
