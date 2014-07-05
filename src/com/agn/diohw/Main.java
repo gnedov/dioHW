@@ -3,8 +3,11 @@ package com.agn.diohw;
 public class Main {
 
     public static void main(String[] arg0) {
-        pojoPerson();  // HomeWork. Part1.
-        arrayPersons(); //  HomeWork. Part2.
+    //    pojoPerson();  // HomeWork. Part1.
+     //   arrayPersons(); //  HomeWork. Part2.
+
+        patternBuilder();   // ClassWork. Implements Builder pattern.
+
     }
 
     private static void pojoPerson(){
@@ -25,6 +28,19 @@ Cгенерируйте equals/hashcode методы
         //compare persons with ==, .equals, and hashCode
         comparePersons(personIvan, personPetro);
         comparePersons(clone_1, clone_2);
+    }
+
+    private static void comparePersons(PersonB p1, PersonB p2) {
+        System.out.println("==========================delimitor====================================");
+        System.out.println("Compare " + p1.getFirstName() + " and " + p2.getFirstName() + ":");
+        System.out.println(p1.toString());
+        System.out.println(p2.toString());
+        System.out.println("Compare by reference (using == ): ");
+        printCompareResult(p1 == p2);
+        System.out.println("Compare by fields value (using .equals keyword ): ");
+        printCompareResult(p1.equals(p2));
+        System.out.println("Compare by hashCode: " + p1.hashCode() + " and " + p2.hashCode());
+        printCompareResult(p1.hashCode() == p2.hashCode());
     }
 
     private static void comparePersons(Person p1, Person p2) {
@@ -74,5 +90,31 @@ Cгенерируйте equals/hashcode методы
                 }
             }
         }
+    }
+    
+    private static void patternBuilder(){
+        PersonB person = new PersonB.Builder()
+                .firstName("firstAAA")
+                .lastName("lastBBB")
+                .age(55)
+                .rank(EnumRank.DEVELOPER)
+                .build();
+
+        PersonB personCopy = new PersonB.Builder(person)
+                .age(56)
+                .build();
+
+        comparePersons(person, personCopy);
+        // Init unique persons
+        PersonB personIvan = new PersonB("Ivan", "Ivanov", 23, EnumRank.TESTER);
+        PersonB personPetro = new PersonB("Petro", "Petrov", 27, EnumRank.SELLER);
+
+        PersonB[] arrPers1 = new PersonB[]{personIvan, personPetro};
+        PersonB[] arrPers2 = new PersonB[]{person, personCopy};
+      //  PersonB[] arrMerge;
+
+      //  PersonOperation perOp = new PersonOperation();
+      //  arrMerge = perOp.mergePersons(arrPers1, arrPers2);
+      //  perOp.printArray(arrMerge);
     }
 }
