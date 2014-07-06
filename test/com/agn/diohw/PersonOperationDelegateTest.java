@@ -18,7 +18,7 @@ public class PersonOperationDelegateTest {
     }
 
     @Test
-    public void testMergePersons() throws Exception {
+    public void mergePersonsTest() throws Exception {
         PersonB p1 = new PersonB.Builder()
                 .firstName("Ivan").lastName("Ivanov").age(23).rank(TESTER)
                 .build();
@@ -57,7 +57,24 @@ public class PersonOperationDelegateTest {
     }
 
     @Test
-    public void testPrintArray() throws Exception {
+    public void printArrayTest() throws Exception {
         // how to test Print method?
+    }
+    
+    @Test
+    public void removeDuplicateTest() throws Exception{
+        
+        PersonB p7 = new PersonB.Builder()
+                .firstName("Anna").lastName("Zaharova").age(19).rank(DIRECTOR)
+                .build();
+        PersonB p8 = new PersonB.Builder()
+                .firstName("Olga").lastName("Sidorchuk").age(52).rank(CLEANER)
+                .build();
+        
+        PersonB[] arrPers = new PersonB[]{p7, p8, p7, p7, p8, p8, p8, p7};
+        PersonB[] arrExpected = new PersonB[]{p7,  p8};
+        PersonOperation perOp = new PersonOperation(); // not initialized in @Before statement! Why?
+        PersonB[] arrActual = perOp.removeDuplicates(arrPers);
+        assertArrayEquals(arrExpected, arrActual); // WARN: size NOT equal!
     }
 }
