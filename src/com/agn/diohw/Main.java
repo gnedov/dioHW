@@ -3,7 +3,7 @@ package com.agn.diohw;
 import static com.agn.diohw.EnumRank.*;
 
 public class Main {
-
+    private static final String DELIMITOR = "==========================delimitor====================================";
     public static void main(String[] arg0) {
     //    pojoPerson();  // HomeWork. Part1.
      //   arrayPersons(); //  HomeWork. Part2.
@@ -33,7 +33,7 @@ Cгенерируйте equals/hashcode методы
     }
 
     private static void comparePersons(PersonB p1, PersonB p2) {
-        System.out.println("==========================delimitor====================================");
+        System.out.println(DELIMITOR);
         System.out.println("Compare " + p1.getFirstName() + " and " + p2.getFirstName() + ":");
         System.out.println(p1.toString());
         System.out.println(p2.toString());
@@ -46,7 +46,7 @@ Cгенерируйте equals/hashcode методы
     }
 
     private static void comparePersons(Person p1, Person p2) {
-        System.out.println("==========================delimitor====================================");
+        System.out.println(DELIMITOR);
         System.out.println("Compare " + p1.getFirstName() + " and " + p2.getFirstName() + ":");
         System.out.println(p1.toString());
         System.out.println(p2.toString());
@@ -122,13 +122,18 @@ Cгенерируйте equals/hashcode методы
                 .rank(SELLER)
                 .build();
 
-        PersonB[] arrPers1 = new PersonB[]{personIvan, personPetro};
-        PersonB[] arrPers2 = new PersonB[]{person, personCopy};
+        PersonB[] arrPers1 = new PersonB[]{personIvan, personIvan, personPetro, personIvan, personIvan};
+        PersonB[] arrPers2 = new PersonB[]{personIvan, person, personCopy};
         PersonB[] arrMerge;
 
         PersonOperation perOp = new PersonOperation();
         PersonOperationDelegate operDelegate = new PersonOperationDelegate(perOp);
         arrMerge = operDelegate.mergePersons(arrPers1, arrPers2);
         operDelegate.printArray(arrMerge);
+
+        System.out.println(DELIMITOR);
+        System.out.println("Merged array without duplicates:");
+        operDelegate.printArray( operDelegate.removeDuplicates(arrMerge));
+
     }
 }

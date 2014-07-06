@@ -15,4 +15,8 @@ public class PersonOperationDelegate {
     public void printArray(PersonB[] arrPers) {
         resource.printArray(arrPers);
     }
+
+    public PersonB[] removeDuplicates(PersonB[] arrInput) {
+        return resource.removeDuplicates(arrInput);
+    }
 }
